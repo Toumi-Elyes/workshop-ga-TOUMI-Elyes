@@ -33,3 +33,21 @@ jobs:
         with:
           name: coverage_outputs
           path: ./coverage_outputs
+
+    functional-tests:
+      runs-on: ubuntu-20.04
+      container: docker://epitechcontent/epitest-docker
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+  
+        - name: Run tests
+          shell: bash
+          run: bash functional-test.sh > functional_outputs
+
+        - name: functional artifact
+          if: ${{ always() }}
+          uses: actions/upload-artifact@v2
+          with:
+            name: functional_outputs
+            path: ./functional_outputs
