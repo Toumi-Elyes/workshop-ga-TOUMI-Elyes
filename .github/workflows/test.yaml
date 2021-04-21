@@ -16,6 +16,7 @@ jobs:
     container: docker://epitechcontent/epitest-docker
     steps:
       - name: Run tests
+        shell: bash
         run: |
           make tests_run
           make coverage
