@@ -17,9 +17,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Pull image
         run: |
-          docker pull epitechcontent/epitest-docker
-          docker-compose up -d
-      - name: Say hello world
-        run: |
+          sudo docker run --rm -it -v $PWD:/home/ -w /home epitechcontent/epitest-docker
           make tests_run
           gcovr --exclude tests/
