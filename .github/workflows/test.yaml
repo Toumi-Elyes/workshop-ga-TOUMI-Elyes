@@ -16,12 +16,13 @@ jobs:
     container: docker://epitechcontent/epitest-docker
     steps:
       - name: Checkout
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Run tests
         shell: bash
         run: make tests_run
 
       - name: Get coverage
+        if: ${{ always() }}
         shell: bash
         run: make coverage
