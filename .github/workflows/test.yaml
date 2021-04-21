@@ -10,11 +10,15 @@ jobs:
     steps:
       - name: Say hello world
         run: echo 'echo Welcome to the Github Actions workshop !'
+
   unit-test:
-    using: Docker
-    image: epitechcontent/epitest-docker
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: Pull image
+        run: |
+          docker pull epitechcontent/epitest-docker
+          docker-compose up -d
       - name: Say hello world
         run: |
           make tests_run
