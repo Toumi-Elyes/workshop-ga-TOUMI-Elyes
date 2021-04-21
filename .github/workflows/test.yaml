@@ -43,7 +43,9 @@ jobs:
 
       - name: Run tests
         shell: bash
-        run: bash functional-test.sh > functional_outputs
+        run: |
+          make
+          bash functional-test.sh > functional_outputs
 
       - name: functional artifact
         if: ${{ always() }}
