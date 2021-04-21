@@ -26,3 +26,4 @@ jobs:
         if: ${{ always() }}
         shell: bash
         run: make coverage
+        path: path/to/coverage_outputs
