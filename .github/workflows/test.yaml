@@ -25,8 +25,11 @@ jobs:
       - name: Get coverage
         if: ${{ always() }}
         shell: bash
-        run: make coverage
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: coverage_outputs
+        run: make coverage > coverage_outputs
+
+      - name: coverage artifact
+        if: ${{ always() }}
+         uses: actions/upload-artifact@v2
+          with:
+            name: coverage_outputs
+            path: ./coverage_outputs
