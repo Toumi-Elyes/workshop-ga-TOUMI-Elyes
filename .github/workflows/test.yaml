@@ -26,4 +26,7 @@ jobs:
         if: ${{ always() }}
         shell: bash
         run: make coverage
-      path: path/to/coverage_outputs
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: coverage_outputs
